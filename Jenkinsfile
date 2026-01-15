@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git branch: 'main', poll: false, url: 'https://github.com/Amankumar81/Dev0ps.git'
+                git branch: 'main', poll: false, url: 'https://github.com/Amankumar81/linux_terminal.git'
             }
         }
 
