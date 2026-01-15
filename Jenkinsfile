@@ -3,17 +3,17 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git branch: 'main', poll: false, url: 'https://github.com/Amankumar81/linux_terminal.git'
+                git branch: 'main', poll: false, url: 'https://github.com/Amankumar81/Dev0ps.git'
             }
         }
 
         stage('Build and Push Images') {
             steps {
                 script {
-                    sh 'docker build -t Amankumar81/react-app1 .'
+                    sh 'docker build -t amankumar81/react-app1 .'
                     withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'ay_pass', usernameVariable: 'ay_user')]) {
                         sh 'docker login -u $ay_user -p $ay_pass'
-                        sh 'docker push Amankumar81/react-app1 '
+                        sh 'docker push amankumar81/react-app1 '
                     }
                 }
             }
@@ -23,7 +23,7 @@ pipeline {
             steps {
                 script {
                     sh 'docker rm -f  react-app1'
-                    sh 'docker run -d --name my-react-app2 -p 5000:80 Amankumar81/react-app1'
+                    sh 'docker run -d --name my-react-app2 -p 1155:80 amankumar81/react-app1'
                 }
             }
         }
@@ -31,7 +31,7 @@ pipeline {
         stage('Post Deployment Testing') {
             steps {
                 script {
-                    sh 'curl -I http://localhost:5000'
+                    sh 'curl -I http://localhost:1155'
                 }
             }
         }
