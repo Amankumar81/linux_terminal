@@ -23,7 +23,7 @@ pipeline {
             steps {
                 script {
                     sh 'docker rm -f  react-app1'
-                    sh 'docker run -d --name my-react-app1 -p 5000:80 amankumar81/react-app1'
+                    sh 'docker run -d --name my-react-app5 -p 5000:80 amankumar81/react-app1'
                 }
             }
         }
