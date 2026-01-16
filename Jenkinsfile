@@ -10,10 +10,10 @@ pipeline {
         stage('Build and Push Images') {
             steps {
                 script {
-                    sh 'docker build -t amankumar81/react-app1 .'
+                    sh 'docker build -t amankumar81/react-app1:latest .'
                     withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'ay_pass', usernameVariable: 'ay_user')]) {
                         sh 'docker login -u $ay_user -p $ay_pass'
-                        sh 'docker push amankumar81/react-app1 '
+                        sh 'docker push amankumar81/react-app1:latest '
                     }
                 }
             }
@@ -22,7 +22,7 @@ pipeline {
         stage('Deploy Services') {
             steps {
                 script {
-                    sh 'docker rm -f  react-app1'
+                    sh 'docker rm -f  linux-terminal'
                     sh 'docker run -d --name linux-terminal -p 8000:80 amankumar81/react-app1'
                 }
             }
