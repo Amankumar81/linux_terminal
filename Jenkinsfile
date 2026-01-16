@@ -23,7 +23,7 @@ pipeline {
             steps {
                 script {
                     sh 'docker rm -f  react-app1'
-                    sh 'docker run -d --name linux-terminal-app -p 8000:80 amankumar81/react-app1'
+                    sh 'docker run -d --name linux-terminal -p 8000:80 amankumar81/react-app1'
                 }
             }
         }
